@@ -26,11 +26,50 @@ public class RLE {
     }
 
     /** TODO 1: Given a String (a genome sequence of COVID-19) implement the RLE algorithm that will use RLE to compress a String. Returns the compressed String. */
-    public static String compress(String uncompressed) { return null; }
+    public static String compress(String uncompressed) {
+        int numberOfOccurrences = 0;
+        String givenLetter = "";
+        String toReturn = "";
+        for(int i = 0; i < uncompressed.length()-1; i++) {
+            givenLetter = String.valueOf(uncompressed.charAt(i));
+            if(String.valueOf(uncompressed.charAt(i)) == " ") {
+
+            }
+            if (uncompressed.charAt(i) == uncompressed.charAt(i+1)){
+                numberOfOccurrences++;
+            }
+            else{
+                toReturn += (numberOfOccurrences+1) + givenLetter;
+                numberOfOccurrences = 0;
+                givenLetter = "";
+            }
+        }
+        toReturn += (numberOfOccurrences+1) + givenLetter;
+        return toReturn;
+    }
 
     /** TODO 2: Given a String (a genome sequence of COVID-19) implement the RLE algorithm that will use RLE to decompress a String. Returns the uncompressed String. */
     public static String decompress(String compressed) {
-        return null;
+        String toReturn = "";
+
+        int n = 0;
+        int index = 0;
+
+        while(compressed.length() > index) {
+            if(Character.isDigit(compressed.charAt(index))) {
+                n = Integer.parseInt(n+String.valueOf(compressed.charAt(index)));
+            }
+            else{
+                char letter = compressed.charAt(index);
+                while(n > 0){
+                    toReturn += letter;
+                    n--;
+                }
+            }
+            index++;
+        }
+
+        return toReturn;
     }
 
 

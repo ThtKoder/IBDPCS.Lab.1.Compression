@@ -22,13 +22,13 @@ class RLETest {
     @org.junit.jupiter.api.Test
     void compress() throws FileNotFoundException {
         String compressed = RLE.compress(decompressed);
-        assertEquals(compressed,this.compressed);
+        assertEquals(this.compressed,compressed);
     }
 
     @org.junit.jupiter.api.Test
     void decompress() {
         String decompressed = RLE.decompress(compressed);
-        assertEquals(decompressed,this.decompressed);
+        assertEquals(this.decompressed,decompressed);
     }
 
 }
